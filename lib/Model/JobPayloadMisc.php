@@ -1,6 +1,6 @@
 <?php
 /**
- * JobPayload
+ * JobPayloadMisc
  *
  * PHP version 5
  *
@@ -32,14 +32,15 @@ namespace Autodesk\Forge\Client\Model;
 use \ArrayAccess;
 
 /**
- * JobPayload Class Doc Comment
+ * JobPayloadMisc Class Doc Comment
  *
  * @category    Class
+ * @description Group of miscs
  * @package     Autodesk\Forge\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class JobPayload implements ArrayAccess
+class JobPayloadMisc implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,16 +48,14 @@ class JobPayload implements ArrayAccess
      * The original name of the model.
      * @var string
      */
-    protected static $swaggerModelName = 'jobPayload';
+    protected static $swaggerModelName = 'jobPayload_misc';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'input' => '\Autodesk\Forge\Client\Model\JobPayloadInput',
-        'output' => '\Autodesk\Forge\Client\Model\JobPayloadOutput',
-        'misc' => '\Autodesk\Forge\Client\Model\JobPayloadMisc',
+        'workflow' => 'string',
     ];
 
     /**
@@ -72,9 +71,7 @@ class JobPayload implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'input' => 'input',
-        'output' => 'output',
-        'misc' => 'misc',
+        'workflow' => 'workflow',
     ];
 
 
@@ -83,9 +80,7 @@ class JobPayload implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'input' => 'setInput',
-        'output' => 'setOutput',
-        'misc' => 'setMisc',
+        'workflow' => 'setWorkflow',
     ];
 
 
@@ -94,9 +89,7 @@ class JobPayload implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'input' => 'getInput',
-        'output' => 'getOutput',
-        'misc' => 'getMisc',
+        'workflow' => 'getWorkflow',
     ];
 
     public static function attributeMap()
@@ -130,9 +123,7 @@ class JobPayload implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['input'] = isset($data['input']) ? $data['input'] : null;
-        $this->container['output'] = isset($data['output']) ? $data['output'] : null;
-        $this->container['misc'] = isset($data['misc']) ? $data['misc'] : null;
+        $this->container['workflow'] = isset($data['workflow']) ? $data['workflow'] : null;
     }
 
     /**
@@ -143,7 +134,7 @@ class JobPayload implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = [];
-
+       
         return $invalid_properties;
     }
 
@@ -161,65 +152,23 @@ class JobPayload implements ArrayAccess
 
 
     /**
-     * Gets input
-     * @return \Autodesk\Forge\Client\Model\JobPayloadInput
+     * Gets urn
+     * @return string
      */
-    public function getInput()
+    public function getWorkflow()
     {
-        return $this->container['input'];
+        return $this->container['workflow'];
     }
 
     /**
-     * Sets input
-     * @param \Autodesk\Forge\Client\Model\JobPayloadInput $input
+     * Sets workflow
+     * @param call MD POST job endpoint to submit a job and specify a workflow id
      * @return $this
      */
-    public function setInput($input)
+    public function setWorkflow($urn)
     {
-        $this->container['input'] = $input;
+        $this->container['workflow'] = $urn;
 
-        return $this;
-    }
-
-    /**
-     * Gets output
-     * @return \Autodesk\Forge\Client\Model\JobPayloadOutput
-     */
-    public function getOutput()
-    {
-        return $this->container['output'];
-    }
-
-    /**
-     * Sets output
-     * @param \Autodesk\Forge\Client\Model\JobPayloadOutput $output
-     * @return $this
-     */
-    public function setOutput($output)
-    {
-        $this->container['output'] = $output;
-
-        return $this;
-    }
-
-    /**
-     * Gets misc
-     * @return \Autodesk\Forge\Client\Model\JobPayloadMisc
-     */
-    public function getMisc()
-    {
-        return $this->container['misc'];
-    }
- 
-    /**
-     * Sets misc
-     * @param \Autodesk\Forge\Client\Model\JobPayloadMisc $Misc
-     * @return $this
-     */
-    public function setMisc($misc)
-    {
-        $this->container['misc'] = $misc;
- 
         return $this;
     }
 
@@ -281,5 +230,3 @@ class JobPayload implements ArrayAccess
         return json_encode(\Autodesk\Forge\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-
